@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Slowly Reverb</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Slowly Reverb</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <section class="step-card active" style="max-width: 700px;">
+                <div class="step-header">
+                    <span class="step-badge">About Us</span>
+                    <h2>Our Mission</h2>
+                </div>
+                
+                <div style="text-align: left; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--text-primary);">Slowly Reverb</strong> is an open-source, client-side audio processing tool designed for music enthusiasts, producers, and experimental creators. 
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        Our goal is to provide a free, accessible, and private way to apply "slowed + reverb" effects to audio files without requiring complex software, accounts, or uploads to external servers.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong style="color: var(--text-primary);">How it works:</strong> Unlike traditional web apps, Slowly Reverb uses the native Web Audio API built into your browser. When you upload a file, it never leaves your device. The audio is decoded, processed (time-stretched and convolved with a synthetic reverb impulse response), and encoded back into an MP3 file entirely within your browser's memory.
+                    </p>
+                    <p>
+                        <strong style="color: var(--text-primary);">Open Source Commitment:</strong> We believe in transparency. This project is open-source, meaning the code is publicly available for review, contribution, and self-hosting. We do not track, store, or monetize your audio data.
+                    </p>
+                </div>
+
+                <div class="step-actions" style="margin-top: 2.5rem;">
+                    <a href="index.html" class="btn btn-primary">Back to Processor</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p class="legal-text">
+                <strong>Legal Disclaimer & Copyright Notice:</strong> Slowly Reverb is an experimental tool intended for educational and personal use only. We do not promote, support, or condone copyright infringement. Users are solely responsible for ensuring they have the necessary rights or permissions for any audio files they process. This platform does not store, host, or transmit any audio data; all processing occurs locally on your device. By using this service, you agree to our <a href="terms.html">Terms and Conditions</a>.
+            </p>
+            <p class="copyright-text">&copy; 2026 Slowly Reverb. Open Source Project.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

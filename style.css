@@ -1,0 +1,462 @@
+/* Sharp Material UI & UX - Black & White Theme */
+:root {
+    --bg-color: #FAFAFA;
+    --surface-color: #FFFFFF;
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --border-color: #111111;
+    --accent-color: #111111;
+    --accent-text: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --sharp-shadow: 4px 4px 0px #111111;
+    --sharp-shadow-hover: 6px 6px 0px #111111;
+    --radius: 2px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    border-radius: var(--radius);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+/* Main Content */
+.app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-card {
+    background-color: var(--surface-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--sharp-shadow);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    display: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+.step-card.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.step-badge {
+    display: inline-block;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.step-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.step-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Step 1: Upload */
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--bg-color);
+}
+
+.drop-zone:hover, .drop-zone.dragover {
+    background-color: #EEEEEE;
+    border-color: #000000;
+    box-shadow: inset 0 0 0 2px #000000;
+}
+
+.drop-icon {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.drop-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.drop-subtext {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Step 2: Preferences */
+.track-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.track-icon {
+    color: var(--text-primary);
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.track-size {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.controls-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.control-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.control-label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.control-value {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #E0E0E0;
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Step 3: Processing Animation */
+.processing-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.waveform-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 60px;
+}
+
+.wave-bar {
+    width: 8px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    animation: wave 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { height: 20%; animation-delay: 0s; }
+.wave-bar:nth-child(2) { height: 40%; animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { height: 80%; animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { height: 100%; animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { height: 60%; animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { height: 40%; animation-delay: 0.6s; }
+
+@keyframes wave {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+}
+
+.processing-status {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+}
+
+/* Step 4: Download */
+.success-visual {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+}
+
+.success-icon {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.success-visual h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Buttons */
+.step-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 0.875rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+    box-shadow: var(--sharp-shadow);
+}
+
+.btn-primary:hover {
+    box-shadow: var(--sharp-shadow-hover);
+    transform: translate(-2px, -2px);
+}
+
+.btn-primary:active {
+    box-shadow: 2px 2px 0px #111111;
+    transform: translate(2px, 2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-color);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+}
+
+/* Footer - Subtle Legal */
+.app-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #E0E0E0;
+    text-align: center;
+}
+
+.legal-text {
+    font-size: 0.7rem;
+    color: #999999;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto 0.75rem auto;
+}
+
+.legal-text a {
+    color: #777777;
+    text-decoration: underline;
+}
+
+.legal-text a:hover {
+    color: #333333;
+}
+
+.copyright-text {
+    font-size: 0.75rem;
+    color: #BBBBBB;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .app-container {
+        padding: 1rem;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .step-card {
+        padding: 1.5rem;
+    }
+    
+    .step-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
