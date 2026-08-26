@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slowly Reverb - Client-Side Audio Processor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lamejs for MP3 encoding -->
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Slowly Reverb</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <!-- STEP 1: UPLOAD -->
+            <section id="step-upload" class="step-card active">
+                <div class="step-header">
+                    <span class="step-badge">Step 1</span>
+                    <h2>Upload Your Track</h2>
+                    <p>Select an audio file from your device. Everything happens locally in your browser.</p>
+                </div>
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p class="drop-text">Drag & drop your audio file here</p>
+                    <p class="drop-subtext">or click to browse (MP3, WAV, OGG)</p>
+                    <input type="file" id="file-input" accept="audio/*" hidden>
+                </div>
+            </section>
+
+            <!-- STEP 2: PREFERENCES -->
+            <section id="step-preferences" class="step-card">
+                <div class="step-header">
+                    <span class="step-badge">Step 2</span>
+                    <h2>Set Your Preferences</h2>
+                    <p>Adjust the slowdown and reverb levels to your liking.</p>
+                </div>
+                
+                <div class="track-info" id="track-info">
+                    <div class="track-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18V5l12-2v13"></path>
+                            <circle cx="6" cy="18" r="3"></circle>
+                            <circle cx="18" cy="16" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="track-details">
+                        <span class="track-name" id="track-name">Unknown Track</span>
+                        <span class="track-size" id="track-size">0 MB</span>
+                    </div>
+                </div>
+
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <div class="control-label">
+                            <span>Playback Speed</span>
+                            <span class="control-value" id="speed-value">0.8x</span>
+                        </div>
+                        <input type="range" id="speed-slider" min="0.5" max="1.0" step="0.05" value="0.8">
+                    </div>
+                    <div class="control-item">
+                        <div class="control-label">
+                            <span>Reverb Intensity</span>
+                            <span class="control-value" id="reverb-value">50%</span>
+                        </div>
+                        <input type="range" id="reverb-slider" min="0" max="100" step="5" value="50">
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button id="btn-back-upload" class="btn btn-secondary">Back</button>
+                    <button id="btn-process" class="btn btn-primary">Process Audio</button>
+                </div>
+            </section>
+
+            <!-- STEP 3: PROCESSING -->
+            <section id="step-processing" class="step-card">
+                <div class="step-header">
+                    <span class="step-badge">Step 3</span>
+                    <h2>Processing Your Track</h2>
+                    <p>Please wait while we apply the effects. This may take a few moments.</p>
+                </div>
+                
+                <div class="processing-visual">
+                    <div class="waveform-container">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <p class="processing-status" id="processing-status">Decoding audio...</p>
+                </div>
+            </section>
+
+            <!-- STEP 4: DOWNLOAD -->
+            <section id="step-download" class="step-card">
+                <div class="step-header">
+                    <span class="step-badge">Step 4</span>
+                    <h2>Ready to Download</h2>
+                    <p>Your track has been successfully processed and is ready in high-quality MP3 format.</p>
+                </div>
+                
+                <div class="success-visual">
+                    <div class="success-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Processing Complete!</h3>
+                </div>
+
+                <div class="step-actions">
+                    <button id="btn-download" class="btn btn-primary btn-large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download MP3
+                    </button>
+                    <button id="btn-reset" class="btn btn-secondary">Process Another Track</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p class="legal-text">
+                <strong>Legal Disclaimer & Copyright Notice:</strong> Slowly Reverb is an experimental tool intended for educational and personal use only. We do not promote, support, or condone copyright infringement. Users are solely responsible for ensuring they have the necessary rights or permissions for any audio files they process. This platform does not store, host, or transmit any audio data; all processing occurs locally on your device. By using this service, you agree to our <a href="terms.html">Terms and Conditions</a>.
+            </p>
+            <p class="copyright-text">&copy; 2026 Slowly Reverb. Open Source Project.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
