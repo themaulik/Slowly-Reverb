@@ -6,6 +6,8 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-black.svg?style=flat-square)](http://makeapullrequest.com)
 [![Built with Vanilla JS](https://img.shields.io/badge/Built%20with-Vanilla%20JS-black.svg?style=flat-square)]()
 
+### 🌐 **Live Website:** [themaulik.github.io/Slowly-Reverb](https://themaulik.github.io/Slowly-Reverb/)
+
 ---
 
 ## 🖼️ Website Preview
